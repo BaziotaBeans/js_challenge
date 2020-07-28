@@ -1,0 +1,99 @@
+:root{
+    --purple-principal: #7519EB;
+    --purple-secondary: #601DB5;
+    --orange: #FF9900;
+}
+body{background-color: var(--purple-principal); font-family: Arial, Helvetica, sans-serif;}
+.container{
+    padding: 10px;
+}
+.container .display-1
+{
+    font-size: 2.6em; 
+    color: var(--orange); 
+    text-align: center;
+    padding: 20px;
+}
+
+.container .slide{
+    border: 8px solid var(--purple-secondary);
+    background-color: var(--purple-secondary);
+    margin: 0 auto;
+    width:45vw;
+    /*height: 300px;*/
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 0, 0, .25);
+}
+
+.container .slide .container-img{
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    display: none;
+}
+
+.container .slide .container-img img{
+    width: 100%;
+    height: 300px;
+    
+}
+
+.container .slide .controller
+{
+    border-radius: 50%;
+    padding: 10px;
+    background-color:var(--orange);
+    cursor: pointer;
+    position: absolute;
+    border: none;
+    width: 40px;
+    height: 40px;
+    transition: background-color .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    outline: none;
+}
+
+.container .slide .btn-left{
+    top: 9.4em;
+    left: 10px;
+}
+
+.container .slide .btn-right{
+    top: 9.4em;
+    right: 10px;
+}
+
+.container .slide .controller .fas{
+    color: var(--purple-secondary);
+    font-size: 1.5em;
+    transition: color .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.container .slide .controller:hover{
+    background-color: var(--purple-secondary);
+}
+.container .slide .controller:hover .fas{
+    color: white;
+}
+
+.container .slide .active-img{
+    display: block;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+  
+@-webkit-keyframes fade {
+    from {opacity: .4; transform: scale(0.5);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+@keyframes fade {
+    from {opacity: .4; transform: scale(0.5);}
+    to {opacity: 1; transform: scale(1);}
+}

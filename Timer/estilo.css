@@ -1,0 +1,87 @@
+:root{
+    --purple-principal: #7519EB;
+    --purple-secondario: #5E14BD;
+    --purple-hover: #5314A3;
+    --green: #1BCC17;
+    --gree-hover: #18BB15;
+    --orange: #FF6B00;
+    --orange-hover: #E16003;
+}
+@font-face{
+    font-family: timerFont;
+    src: url(font/digital-7\ \(mono\).ttf);
+}
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+*{margin: 0; padding: 0; box-sizing: border-box;}
+body{
+    background-color: var(--purple-principal);}
+
+.container
+{   
+    margin:100px auto;  
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column;
+}
+.title{font-family: sans-serif; color: white; padding: 30px; }
+
+.timer{
+    display: flex;
+    padding: 10px;
+}
+
+.timer h1
+{
+    font-family: timerFont; 
+    font-size: 7.5em; 
+    color: white; 
+    font-weight: lighter; 
+    /*text-shadow: 0px 0px 30px rgba(255, 255, 255, .6);*/
+    animation-name: text_animated;
+    animation-duration: 900ms;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+}
+
+
+@-webkit-keyframes text_animated{
+    from{text-shadow: none;}
+    to{text-shadow: 2px 3px 50px rgba(255, 255, 255, .8);}
+}
+
+@keyframes text_animated{
+    from{text-shadow: none;}
+    to{text-shadow: 2px 3px 50px rgba(255, 255, 255, .8);}
+} 
+
+.btn-group{display: flex; padding: 15px;}
+
+.btn-start, .btn-pause, .btn-reset{
+    padding: 15px;
+    margin: 0 10px;
+    border-radius: 7px;
+    border: none;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color .4s;
+}
+
+.btn-start{background-color: var(--green);}
+.btn-pause{background-color: var(--purple-secondario);}
+.btn-reset{background-color: var(--orange);}
+.btn-start:hover{
+    background-color: var(--gree-hover);
+}
+.btn-pause:hover{
+    background-color: var(--purple-hover);
+} 
+.btn-reset:hover{
+    background-color: var(--orange-hover);
+}
+

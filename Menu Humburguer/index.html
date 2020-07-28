@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Beans">
+    <title>Menu With Vanila JS and Pure CSS</title>
+    <style>
+        body{background-color: rebeccapurple;}
+        .menu-toggle{
+            width: 150px;
+            height: 200px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .one,
+        .two,
+        .three{
+            background-color: white;
+            height: 15px;
+            width: 100%;
+            margin: 10px;
+            transition: .5s;
+            border-radius: 20px;
+        }
+
+        .one{width: 50%;}
+        .two{width: 75%;}
+        .three{width: 100%;}
+        .menu-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
+            
+        }
+
+        .menu-container .menu-toggle:hover .one{width: 70%;}
+        .menu-container .menu-toggle:hover .two{width: 50%;}
+        .menu-container.on .menu-toggle .one,.menu-container.on .menu-toggle .two, .menu-container.on .menu-toggle .three{
+            width: 100%;
+        } 
+
+        .menu-container.on .menu-toggle .one{
+            transform: rotate(45deg) translate(8px, 38px);
+        }
+
+        .menu-container.on .menu-toggle .two{
+            opacity: 0;
+        }
+
+        .menu-container.on .menu-toggle .three{
+            transform: rotate(-45deg) translate(10px, -38px);
+        }
+
+        h1{
+            font-family: sans-serif;
+            text-align: center;
+            color: white;
+        }
+        .orange{color: #FF9900;}
+        .yellow{color: #FFE600;}
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-toggle">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+        </div>
+    </div>
+
+    <h1>Efeito no Menu + <span class="orange">Pure CSS</span> + <span class="yellow">VANILA JS</span></h1>
+    <script>
+        let element = {
+            menu_toggle: document.querySelector('.menu-toggle'),
+            menu_container: document.querySelector('.menu-container'),
+            show: true
+        }
+        element.menu_toggle.addEventListener('click', ()=>{
+            element.menu_container.classList.toggle('on', element.show);
+            element.show = !element.show;
+        });
+    </script>
+</body>
+</html>

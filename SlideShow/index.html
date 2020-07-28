@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SlideShow</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://kit.fontawesome.com/93146aa192.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-1">Slides/Carousel</h1>
+
+        <div class="slide">
+            <div class="container-img active-img fade">
+                <img src="img/img1.jpg">
+            </div>
+            <div class="container-img fade">
+                <img src="img/img2.jpg">
+            </div>
+            <div class="container-img fade">
+                <img src="img/img3.jpg">
+            </div>
+            <div class="container-img fade">
+                <img src="img/img4.jpg">
+            </div>
+            <button class="controller btn-left">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="controller btn-right">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!--<script src="main.js" defer></script>-->
+    <script>
+        let element = {
+            btn_right: document.querySelector('.btn-right'),
+            btn_left: document.querySelector('.btn-left'),
+            images: document.querySelectorAll('.container-img'),
+            total_images: function(){
+                return this.images.length;
+            }
+        };
+
+        let controller = {
+            next: 0,
+            prev: 0,
+            current: 0
+        }
+
+        element.btn_right.addEventListener('click', ()=>{
+            if(element.total_images() > 0){
+                document.querySelectorAll('.container-img')[controller.current].classList.remove('active-img');
+                controller.current++;
+                if(controller.current > element.total_images() - 1) controller.current = 0;
+                document.querySelectorAll('.container-img')[controller.current].classList.add('active-img');
+                console.log(document.querySelectorAll('.container-img')[controller.current]);
+            }
+        });
+        element.btn_left.addEventListener('click', ()=>{
+            if(element.total_images() > 0){
+                document.querySelectorAll('.container-img')[controller.current].classList.remove('active-img');
+                controller.current--;
+                if(controller.current < 0) controller.current = element.total_images() - 1;
+                document.querySelectorAll('.container-img')[controller.current].classList.add('active-img');
+                console.log(document.querySelectorAll('.container-img')[controller.current]);
+            }
+        });
+
+
+    
+    </script>
+</body>
+</html>

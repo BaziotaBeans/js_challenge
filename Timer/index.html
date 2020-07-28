@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Timer</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Timer</h1>
+
+        <div class="timer">
+            <h1 class="hour">00</h1>
+            <h1>:</h1>
+            <h1 class="minute">00</h1>
+            <h1>:</h1>
+            <h1 class="second">00</h1>
+        </div>
+        <div class="btn-group">
+            <button class="btn-start">Start</button>
+            <button class="btn-pause">Pause</button>
+            <button class="btn-reset">Reset</button>
+        </div>
+        
+    </div>
+
+    <script>
+        let display_hour = document.querySelector('.hour');
+        let display_minute = document.querySelector('.minute');
+        let display_second = document.querySelector('.second');
+        let btn = {
+            btn_start: document.querySelector('.btn-start'),
+            btn_pause: document.querySelector('.btn-pause'),
+            btn_reset: document.querySelector('.btn-reset')
+        }
+
+        let flag_pause = false;
+        let timer = {
+            hour: 0,
+            minute: 0,
+            second: 0
+        }
+
+        btn.btn_pause.addEventListener('click', ()=>{
+            // if(flag_pause) flag_pause = false;
+            // else flag_pause = true;
+            flag_pause = true;
+        });
+
+        btn.btn_start.addEventListener('click', ()=>{
+            flag_pause = false;
+        });
+
+        btn.btn_reset.addEventListener('click', ()=>{
+            flag_pause = true;
+            timer.second = 0;
+            timer.minute = 0;
+            timer.hour = 0;
+            display_second.innerHTML = '00';
+            display_minute.innerHTML = '00';
+            display_hour.innerHTML = '00';
+        });
+        
+       
+        setInterval(()=>{
+            if(!flag_pause){
+                timer.second++;
+                if(timer.second === 60){
+                    timer.minute++;
+                    timer.second = 0;
+                }
+                if(timer.minute === 60){
+                    timer.hour++;
+                    timer.minute = 0;
+                }
+                if(numberDigite(timer.hour) < 2) display_hour.innerHTML = '0'+timer.hour;
+                else display_hour.innerHTML = timer.hour;
+                
+                if(numberDigite(timer.minute) < 2) display_minute.innerHTML = '0'+timer.minute;
+                else display_minute.innerHTML = timer.minute;
+                
+                if(numberDigite(timer.second) < 2) display_second.innerHTML = '0'+timer.second;
+                else display_second.innerHTML = timer.second;
+                /*var tipo = display_hour.innerHTML;*/
+                console.log(numberDigite(timer.second));
+            }
+            
+        
+        }, 1000);
+        
+
+        function numberDigite(value){
+            return Math.log(value) * Math.LOG10E + 1 | 0;
+        }
+    </script>
+
+</body>
+</html>
