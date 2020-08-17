@@ -1,2 +1,2 @@
-# js_challenge
-# 4 mini project with vanilla js
+# A simple 4 JS Vanilla Project
+- 
